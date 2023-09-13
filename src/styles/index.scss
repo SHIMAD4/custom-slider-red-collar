@@ -1,0 +1,18 @@
+$main-bg: rgb(26, 26, 26);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $main-bg;
+}
+
+.container-slider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
