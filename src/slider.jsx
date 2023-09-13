@@ -6,12 +6,19 @@ export default function Slider() {
   const [slideIndex, setSlideIndex] = useState(1)
   const [slidePos, setSlidePos] = useState(0)
   const intervalRef = useRef(null)
+  let translatePos = 400
+
+  const calculateTranslatePos = () => {
+    const imageWidth = document.getElementById('1').width
+    translatePos = imageWidth
+  }
 
   const startInterval = () => {
+    calculateTranslatePos()
     intervalRef.current = setInterval(() => {
       if (slideIndex !== dataSlider.length) {
         setSlideIndex(slideIndex + 1)
-        setSlidePos(slidePos - 400)
+        setSlidePos(slidePos - translatePos)
       } else {
         setSlideIndex(1)
         setSlidePos(0)
@@ -24,21 +31,23 @@ export default function Slider() {
       clearInterval(intervalRef.current)
       intervalRef.current = null
     }
-  };
+  }
 
   useEffect(() => {
     startInterval()
-
+    window.addEventListener('resize', calculateTranslatePos)
     return () => {
       clearIntervalFunc()
+      window.removeEventListener('resize', calculateTranslatePos)
     }
   })
 
   const nextSlide = () => {
+    calculateTranslatePos()
     clearIntervalFunc()
     if (slideIndex !== dataSlider.length) {
       setSlideIndex(slideIndex + 1)
-      setSlidePos(slidePos - 400)
+      setSlidePos(slidePos - translatePos)
     } else {
       setSlideIndex(1)
       setSlidePos(0)
@@ -47,13 +56,14 @@ export default function Slider() {
   }
 
   const prevSlide = () => {
+    calculateTranslatePos()
     clearIntervalFunc()
     if (slideIndex !== 1) {
       setSlideIndex(slideIndex - 1)
-      setSlidePos(slidePos + 400)
+      setSlidePos(slidePos + translatePos)
     } else {
       setSlideIndex(dataSlider.length)
-      setSlidePos(-dataSlider.length * 300)
+      setSlidePos(-dataSlider.length * translatePos + translatePos)
     }
     startInterval()
   }
@@ -83,7 +93,7 @@ export default function Slider() {
                 width={obj.width}
                 style={styles}
               />
-            );
+            )
           })}
         </div>
         <SliderButton moveSlide={nextSlide} direction={"next"} />
