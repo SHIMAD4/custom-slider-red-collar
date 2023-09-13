@@ -8,7 +8,11 @@ export default function SliderButton({ direction, moveSlide }) {
         onClick={moveSlide}
         className={direction === "next" ? "btn-slide next" : "btn-slide prev"}
       >
-        <img src={direction === "next" ? rightArrow : leftArrow} width={150}/>
+        <img 
+            className={direction === "next" ? "next-button" : "prev-button"}
+            src={direction === "next" ? rightArrow : leftArrow}
+            width={48}
+            height={48}/>
       </button>
     )
 }
