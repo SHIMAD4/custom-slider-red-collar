@@ -21,6 +21,9 @@ export default function Slider() {
           setSlideIndex(dataSlider.length)
       }
   }
+  const moveDot = index => {
+    setSlideIndex(index)
+  }
 
   return (
     <div className="container-slider">
@@ -31,6 +34,15 @@ export default function Slider() {
       }
       <SliderButton moveSlide={prevSlide} direction={"prev"}/>
       <SliderButton moveSlide={nextSlide} direction={"next"}/>
+      <div className="container-dots">
+                {Array.from({length: 4}).map((item, index) => (
+                    <div 
+                      key={index}
+                      onClick={() => moveDot(index + 1)}
+                      className={slideIndex === index + 1 ? "dot active" : "dot"}
+                    ></div>
+                ))}
+      </div>
     </div>
   )
 }
