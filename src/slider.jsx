@@ -1,11 +1,21 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import dataSlider from './dataSlider';
 import SliderButton from './sliderButton';
 
 export default function Slider() {
   const [slideIndex, setSlideIndex] = useState(1)
   const [slidePos, setSlidePos] = useState(0)
-
+  useEffect(() => {
+    setInterval(() => {
+      if(slideIndex !== dataSlider.length) {
+        setSlideIndex(slideIndex + 1)
+        setSlidePos(slidePos - 400)
+      } else {
+        setSlideIndex(1)
+        setSlidePos(0)
+      }
+    }, 2500)
+  })
   const nextSlide = () => {
       if(slideIndex !== dataSlider.length){
           setSlideIndex(slideIndex + 1)
@@ -23,7 +33,7 @@ export default function Slider() {
       }
       else if (slideIndex === 1){
           setSlideIndex(dataSlider.length)
-          setSlidePos(-1200)
+          setSlidePos(-dataSlider.length * 300)
       }
   }
   const moveDot = index => {
