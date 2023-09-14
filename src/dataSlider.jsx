@@ -1,4 +1,4 @@
-const dataSlider = [
+export const dataSlider = [
     {
         key: 1,
         src: '../public/img/01_NF.jpg',
@@ -28,5 +28,3 @@ const dataSlider = [
         width: 400,
     }
 ]
-
-export default dataSlider
