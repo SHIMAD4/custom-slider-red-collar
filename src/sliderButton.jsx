@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import leftArrow from './img/leftArrow.svg';
 import rightArrow from './img/rightArrow.svg';
 
-export default function SliderButton({ direction, moveSlide }) {
+export function SliderButton({ direction, moveSlide }) {
     return (
       <button
         onClick={moveSlide}
