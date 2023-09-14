@@ -8,6 +8,10 @@ body {
   background-color: rgb(0, 0, 0);
 }
 
+ul {
+  list-style-type: none;
+}
+
 button {
   width: 50px;
   height: 50px;
@@ -32,7 +36,14 @@ button:active {
   overflow: hidden;
   width: 100%;
   max-width: 400px;
-  height: auto;
+}
+.container-slider .container-images p {
+  color: white;
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: sans-serif;
 }
 .container-slider button {
   margin: 30px;
@@ -70,8 +81,11 @@ button:active {
     height: 38px;
   }
   .container-slider .container-images {
-    width: 300px;
-    height: 300px;
+    width: 400px;
+    height: 450px;
+  }
+  .container-slider .container-images p {
+    margin-top: 1rem;
   }
   .container-dots .dot {
     width: 30px;
@@ -81,7 +95,13 @@ button:active {
 @media (max-width: 768px) {
   .container-slider .container-images {
     width: 300px;
-    height: 300px;
+    height: 350px;
+  }
+  .container-slider .container-images img {
+    width: 300px;
+  }
+  .container-slider .container-images p {
+    font-size: 1rem;
   }
   .container-dots .dot {
     width: 30px;
@@ -99,7 +119,10 @@ button:active {
   }
   .container-slider .container-images {
     width: 250px;
-    height: 250px;
+    height: 300px;
+  }
+  .container-slider .container-images img {
+    width: 250px;
   }
   .container-dots .dot {
     width: 25px;

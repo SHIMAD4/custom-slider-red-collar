@@ -8,6 +8,15 @@ export default function Slider() {
   const intervalRef = useRef(null)
   let translatePos = 400
 
+  useEffect(() => {
+    startInterval()
+    window.addEventListener('resize', calculateTranslatePos)
+    return () => {
+      clearIntervalFunc()
+      window.removeEventListener('resize', calculateTranslatePos)
+    }
+  })
+
   const calculateTranslatePos = () => {
     const imageWidth = document.getElementById('1').width
     translatePos = imageWidth
@@ -32,15 +41,6 @@ export default function Slider() {
       intervalRef.current = null
     }
   }
-
-  useEffect(() => {
-    startInterval()
-    window.addEventListener('resize', calculateTranslatePos)
-    return () => {
-      clearIntervalFunc()
-      window.removeEventListener('resize', calculateTranslatePos)
-    }
-  })
 
   const nextSlide = () => {
     calculateTranslatePos()
@@ -70,32 +70,30 @@ export default function Slider() {
 
   const moveDot = (index) => {
     clearIntervalFunc()
+    setSlidePos(-translatePos * (index - 1))
     setSlideIndex(index)
     startInterval()
-  }
+  }  
 
   const styles = {
     transform: `translateX(${slidePos}px)`,
+    transition: 'all .3s ease-in-out'
   }
 
   return (
     <>
       <div className="container-slider">
         <SliderButton moveSlide={prevSlide} direction={"prev"} />
-        <div className="container-images">
+        <ul className="container-images">
           {dataSlider.map((obj, index) => {
             return (
-              <img
-                src={obj.src}
-                alt={obj.alt}
-                key={obj.key}
-                id={index}
-                width={obj.width}
-                style={styles}
-              />
+              <li key={obj.key}>
+                <img src={obj.src} alt={obj.alt} id={index} width={obj.width} style={styles}/>
+                <p style={styles}>{obj.title}</p>
+              </li>
             )
           })}
-        </div>
+        </ul>
         <SliderButton moveSlide={nextSlide} direction={"next"} />
       </div>
       <div className="container-dots">

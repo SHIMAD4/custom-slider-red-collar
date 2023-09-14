@@ -12,6 +12,10 @@ body {
   background-color: $main-bg;
 }
 
+ul {
+  list-style-type: none;
+}
+
 button {
   width: 50px;
   height: 50px;
@@ -35,7 +39,14 @@ button {
     overflow: hidden;
     width: 100%;
     max-width: 400px;
-    height: auto;
+    p {
+      color: white;
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 1.5rem;
+      font-weight: bold;
+      font-family: sans-serif;
+    }
   }
   button {
     margin: 30px;
@@ -76,8 +87,11 @@ button {
 
   .container-slider {
     .container-images {
-      width: 300px;
-      height: 300px;
+      width: 400px;
+      height: 450px;
+      p {
+        margin-top: 1rem;
+      }
     }
   }
 
@@ -93,7 +107,13 @@ button {
   .container-slider {
     .container-images {
       width: 300px;
-      height: 300px;
+      height: 350px;
+      img {
+        width: 300px;
+      }
+      p {
+        font-size: 1rem;
+      }
     }
   }
 
@@ -118,7 +138,10 @@ button {
   .container-slider {
     .container-images {
       width: 250px;
-      height: 250px;
+      height: 300px;
+      img {
+        width: 250px;
+      }
     }
   }
 
