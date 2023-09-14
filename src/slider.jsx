@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import SliderButton from './SliderButton';
-import dataSlider from './dataSlider';
+import { dataSlider } from './dataSlider.jsx';
+import { SliderButton } from './sliderButton.jsx';
 
 export default function Slider() {
   const [slideIndex, setSlideIndex] = useState(1)
