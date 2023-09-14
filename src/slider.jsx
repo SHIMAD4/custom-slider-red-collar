@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { dataSlider } from './dataSlider.jsx';
 import { SliderButton } from './sliderButton.jsx';
 
-export default function Slider() {
+export function Slider() {
   const [slideIndex, setSlideIndex] = useState(1)
   const [slidePos, setSlidePos] = useState(0)
   const intervalRef = useRef(null)
